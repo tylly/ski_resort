@@ -30,3 +30,56 @@ Resorts: This model will hold the resorts saved by users to their accounts so th
 TODO's
 
 As I will be using a combination between snoCountry and openweather map, I will need to find a way to modifiy/use search queries so that they satisfy both APIs' query parameters. Will need to somehow find the zip code of the resort the user is searching, and preferably not by having the user entre it manually. 
+
+
+###
+Routes
+
+Users - Signup, Sign In, Edit Account Info, Add Photos
+
+Resorts - Search Resorts, Search Regions, Show resort(s), show regions, add to my resorts, show my resorts, edit my resorts
+
+Seed - will supply site with photos from Unsplash API for backgorund use
+
+Comments/Likes - Post Likes and comments on users own list of resorts. 
+
+###
+ERD notes
+
+users database
+
+username: {
+    type: String,
+    required: true,
+    unique: true
+}, password {
+    type: String,
+    required: true
+}
+
+
+Resorts database
+
+name: String,
+region: String,
+resort_id: String,
+base Depth: Number,
+new Snow: Number,
+current Weather: String,
+next 48: String,
+next 7 days: String
+
+
+site  Photos database
+
+url: {
+    type: String,
+    required: true
+}
+
+User Photos Database:
+
+I have never done this before so im not entirely sure how these docs will look
+
+
+
