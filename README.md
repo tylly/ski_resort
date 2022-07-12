@@ -4,9 +4,11 @@
 User stories
 
 This will be personal ski resort tracker that will allow the user to store
-ski resorts of their preference/relevance to their created account, and then request and show data about them. This is made possible by the snocountry API
+ski resorts of their preference/relevance to their created account, and then request and show data about them. This is made possible by the snocountry API and openweathermap API. Unsplash API will be used for site styling. 
 
-The home page will be a sign in/create account page. On the sign in page, the user will enter some info, including their location. After logging in, the user will come to their home page where data such as the forecast and snow quality about any resorts they have chosen are displayed, as well as suggested resorts based on their location (as provided in their account details). There will be extra emphasis on the user's chosen home resort, as well as the users chosen home region/state. There will also be a nav bar that will house  New Resort, New Region, My Resorts(s) and profile settings tabs. 
+The home page will be a sign in/create account page. On the sign in page, the user will enter some info, including their location. After logging in, the user will come to their home page where data such as the forecast and snow quality about any resorts they have chosen are displayed, as well as suggested resorts based on their location (as provided in their account details). 
+
+There will be extra emphasis on the user's chosen home resort, as well as the users chosen home region/state. There will also be a nav bar that will house  New Resort, New Region, My Resorts(s) and profile settings tabs. 
 
 On the new resort window page, the user can search any ski resport by name. They can then view this resorts stats, and choose to add it to their list of resorts. The same applies to region. 
 
