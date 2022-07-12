@@ -81,6 +81,7 @@ new Snow: Number,
 current Weather: String,
 next 48: String,
 next 7 days: String
+likes: Number,
 
 
 
