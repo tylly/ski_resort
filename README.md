@@ -37,7 +37,7 @@ Routes
 
 Users - Signup, Sign In, Edit Account Info, Add Photos
 
-Resorts - Search Resorts, Search Regions, Show resort(s), show regions, add to my resorts, add to my regions, show my resorts, show my regions, edit my resorts, edit my regions
+Resorts - Search Resorts, Search Regions, Show resort(s), show regions, add to my resorts, add to my regions, show my resorts, show my regions, edit my resorts, edit my regions, comment resort, comment region, rate resort, rate region
 
 Seed - will supply site with photos from Unsplash API for backgorund use
 
