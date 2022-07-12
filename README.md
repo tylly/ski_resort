@@ -67,7 +67,7 @@ name: {
 } state/country: {
     type: String,
     required: true
-} top20: [{
+} top10: [{
     name: {
         type: String,
         required: true
