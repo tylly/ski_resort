@@ -59,6 +59,21 @@ username: {
 
 
 
+regions database
+
+name: {
+    type: String,
+    required: true
+} state/country: {
+    type: String,
+    required: true
+} top20: [{
+    name: {
+        type: String,
+        required: true
+    } icon: String,
+}]
+
 
 
 Resorts database
@@ -80,17 +95,19 @@ base Depth: Number,
 new Snow: Number,
 current Weather: String,
 next 48: String,
-next 7 days: String
-likes: Number,
+icon: String,
+next 7 days: String,
+rating: Number,
+comments: [{type: String}]
 
 
 
 site  Photos database
 
-url: {
+url: [{
     type: String,
     required: true
-}
+}]
 
 User Photos Database:
 
