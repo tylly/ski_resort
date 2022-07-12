@@ -58,16 +58,35 @@ username: {
 }
 
 
+
+
+
 Resorts database
 
-name: String,
+name: {
+    type: String,
+    required: true
+}
 region: String,
-resort_id: String,
+resort_id: {
+    type: string,
+    required: true
+}
+zip code: {
+    type: String,
+    required: true
+}
 base Depth: Number,
 new Snow: Number,
 current Weather: String,
 next 48: String,
 next 7 days: String
+
+
+
+
+
+
 
 
 site  Photos database
