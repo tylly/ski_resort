@@ -1,30 +1,30 @@
 {
-  "name": "ski_resort",
+  "name": "full-crud-fruits-mongoose",
   "version": "1.0.0",
-  "description": "###  User stories",
+  "description": "Full CRUD build fruit app using express, mongoose, and liquid",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "seed": "node models/backgroundSeed.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tylly/ski_resort.git"
+    "url": "https://github.com/tylly/ski_resort.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tylly/ski_resort/issues"
-  },
-  "homepage": "https://github.com/tylly/ski_resort#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^4.6.0",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
     "express-session": "^1.17.3",
     "liquid-express-views": "^1.0.8",
     "method-override": "^3.0.0",
-    "mongoose": "^6.4.4"
+    "mongoose": "^6.2.4",
+    "morgan": "^1.10.0"
   }
 }

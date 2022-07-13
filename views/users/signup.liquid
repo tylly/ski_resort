@@ -1,0 +1,35 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+
+
+<div id="logInMain">
+    <form id="logInForm" action="/users/signup" method="POST">
+        <fieldset>
+            <legend>Sign Up</legend>
+
+            <input 
+                type="text" 
+                name="username" 
+                placeholder="username"
+                class="form-control"
+            >
+           
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="password"
+                class="form-control"
+            >
+        </fieldset>
+        <div class="userEnter">
+        <input 
+            type="submit"
+            value="Sign Up" 
+            class="btn btn-success"
+            id="logInBut"
+        >
+    </div>
+    </form>
+</div>
+
+{% endblock %} 

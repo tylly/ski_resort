@@ -1,0 +1,144 @@
+body {
+  background-image: url("/assets/daniel-sessler-p_3j4nZpZw4-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.card {
+  margin: 5px;
+}
+
+a {
+  margin: 5px;
+}
+
+#navbarNav {
+  display: flex;
+  justify-content: space-around;
+}
+
+#cover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  flex-direction: column;
+}
+
+#homeMain {
+  position: relative;
+  width: 70%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  color: whitesmoke;
+  transition: 0.3s ease-in-out;
+  -webkit-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
+}
+
+#viewMain {
+  position: relative;
+  width: 70%;
+  height: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  color: whitesmoke;
+  transition: 0.3s ease-in-out;
+  -webkit-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
+}
+
+#logInMain {
+  position: relative;
+  width: 60%;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  color: whitesmoke;
+  transition: 0.3s ease-in-out;
+  -webkit-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
+}
+
+#searchResortMain {
+  position: relative;
+  width: 60%;
+  height: 210px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  color: whitesmoke;
+  transition: 0.3s ease-in-out;
+  -webkit-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
+}
+
+legend {
+  margin-top: 15px;
+}
+
+#pass {
+  margin-top: 10px;
+}
+
+#logoCont {
+  display: flex;
+  justify-content: center;
+}
+
+#homeImg {
+  margin-top: 20px;
+  border-radius: 3px;
+}
+
+.stats {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.pHead {
+  text-decoration: underline;
+}
+
+p {
+  font-size: 12px;
+}
+
+fieldset {
+  text-align: center;
+}
+.form-control {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.userEnter {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#resortSearch {
+  margin-top: 70px;
+}
+
+

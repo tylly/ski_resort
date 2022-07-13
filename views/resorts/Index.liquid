@@ -1,0 +1,36 @@
+{% layout 'layout.liquid' %} {% block content %}
+<div id="homeMain">
+  <div id="logoCont">
+    <img id="homeImg" src="{{ resorts.logo }}"/>
+  </div>
+  <div class="stats">
+    <div id="openTrails">
+        <p class="pHead">Runs Open</p>
+      <p>{{resorts[0].openDownHillTrails}}/{{resorts[0].maxOpenDownHillTrails}}</p>
+    </div>
+    <div id="snowCon">
+        <p class="pHead">Snow Condition</p>
+    <p>{{resorts[0].primarySurfaceCondition}}</p>
+  </div>
+    <div id="openLifts">
+        <p class="pHead">Lifts Open</p>
+      <p>{{resorts[0].openDownHillLifts}}/{{resorts[0].maxOpenDownHillLifts}}</p>
+    </div>
+  </div>
+  <div class="stats">
+    <div id="base">
+        <p class="pHead">Base Min/Base Max</p>
+      <p>{{resorts[0].avgBaseDepthMin}}"/{{resorts[0].avgBaseDepthMax}}"</p>
+    </div>
+    <div id="id">
+        <p class="pHead">Resort ID</p>
+      <p>{{resorts[0].id}}</p>
+    </div>
+    <div id="parks">
+        <p class="pHead">Terrain Parks Open</p>
+    <p>{{resorts[0].terrainParkOpen}}</p>
+  </div>
+  </div>
+</div>
+
+{% endblock %}
