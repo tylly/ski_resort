@@ -25,45 +25,23 @@ router.get("/resorts/add", async (req, res) => {
   res.redirect("resorts/home");
 });
 
-router.get("/update/1", async (req, res) => {
-  resorts = await Resort.find({ owner: req.session.userId });
-  console.log(resorts[1].resortName)
-  for (let i = 0; i < resorts.length; i++){
-      if(i === 1){
-        return Resort.findOneAndUpdate({resortName: resorts[1].resortName},[{$set:{isHomeResort:{$eq:[false,"$isHomeResort"]}}}])
-      } else {
-          return Resort.findOneAndUpdate({resortName: resorts[i].resortName}, {$set: {isHomeResort: false}})
-      }
-  }
-  console.log(resorts[1]);
+router.get("/update", async (req, res) => {
   res.redirect("http://localhost:3000/resorts/home");
 });
 
-router.get("/update/2", async (req, res) => {
-  resorts = await Resort.find({ owner: req.session.userId });
-  console.log(resorts[2]);
-  for (let i = 0; i < resorts.length; i++){
-    if(i === 2){
-      return Resort.findOneAndUpdate({resortName: resorts[2].resortName},[{$set:{isHomeResort:{$eq:[false,"$isHomeResort"]}}}])
-    } 
-    
-}
-  
-  res.redirect("http://localhost:3000/resorts/home");
-});
 
-router.get("/update/3", async (req, res) => {
-  resorts = await Resort.find({ owner: req.session.userId });
-  console.log(resorts[3]);
-    
-
+//EDIT Resort
+//Reassigns home resort
+router.put("/update", async (req, res) => {
+  let update = await req.body.resortId;
+  console.log(update);
+  await Resort.updateMany({}, { $set: { isHomeResort: false } });
+  await Resort.findOneAndUpdate(
+    { resortId: update },
+    { $set: { isHomeResort: true } }
+  );
 
   res.redirect("http://localhost:3000/resorts/home");
-});
-
-router.post("/update", async (req, res) => {
-  console.log(req.session);
-  res.send("hey");
 });
 
 router.post("/", async (req, res) => {

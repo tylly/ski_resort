@@ -44,15 +44,25 @@
     <p>___________</p>
     <h6>{{ resorts[1].maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
-    <button
-      id="pokiBut"
-      onclick="window.location.href='http://localhost:3000/resorts/update/1';"
-    >
-      <img
-        class="homeButImg"
-        src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
-      />
-    </button>
+    <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
+      <div id="resortSearch" style="display: none">
+        <input
+          type="text"
+          name="resortId"
+          value="{{ resorts[1].resortId }}"
+          class="form-control"
+        />
+      </div>
+      <div class="userEnter">
+        <input
+          class="homeButImg"
+          type="image"
+          src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
+          value="Add to My Resorts"
+          id="logInBut"
+        />
+      </div>
+    </form>
   </div>
 
   <div class="homeCards">
@@ -60,15 +70,25 @@
     <p>___________</p>
     <h6>{{ resorts[2].maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
-    <button
-      id="pokiBut"
-      onclick="window.location.href='http://localhost:3000/resorts/update/2';"
-    >
-      <img
-        class="homeButImg"
-        src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
-      />
-    </button>
+    <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
+      <div id="resortSearch" style="display: none">
+        <input
+          type="text"
+          name="resortId"
+          value="{{ resorts[2].resortId }}"
+          class="form-control"
+        />
+      </div>
+      <div class="userEnter">
+        <input
+          class="homeButImg"
+          type="image"
+          src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
+          value="Add to My Resorts"
+          id="logInBut"
+        />
+      </div>
+    </form>
   </div>
 
   <div class="homeCards">
@@ -76,15 +96,25 @@
     <p>___________</p>
     <h6>{{ resorts[3].maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
-    <button
-      id="pokiBut"
-      onclick="window.location.href='http://localhost:3000/resorts/update/3';"
-    >
-      <img
-        class="homeButImg"
-        src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
-      />
-    </button>
+    <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
+      <div id="resortSearch" style="display: none">
+        <input
+          type="text"
+          name="resortId"
+          value="{{ resorts[3].resortId }}"
+          class="form-control"
+        />
+      </div>
+      <div class="userEnter">
+        <input
+          class="homeButImg"
+          type="image"
+          src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
+          value="Add to My Resorts"
+          id="logInBut"
+        />
+      </div>
+    </form>
   </div>
 </div>
 
