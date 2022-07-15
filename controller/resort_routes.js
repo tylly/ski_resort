@@ -12,10 +12,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.delete('/home', async (req, res) => {
+    console.log(req.body)
+    let destroy = await req.body.resortId;
+    await Resort.deleteOne({resortId: destroy})
+    res.redirect('http://localhost:3000/resorts/home')
+})
+
 router.get("/home", async (req, res) => {
   try {
-    resorts = await Resort.find({ owner: req.session.userId });
-    res.render("resorts/index", { resorts });
+    let resorts = await Resort.find({$and: [{owner: req.session.userId}, {isHomeResort: false } ]});
+   let  home = await Resort.find({$and: [{owner: req.session.userId}, {isHomeResort: true } ]});
+    res.render("resorts/index", { resorts, home });
   } catch {
     console.log("no");
   }

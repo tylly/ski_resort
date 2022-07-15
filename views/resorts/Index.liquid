@@ -1,55 +1,53 @@
 {% layout 'layout.liquid' %} {% block content %}
 <div id="homeMain">
   <div id="logoCont">
-    <img id="homeImg" src="{{ resorts[0].logo }}" />
+    <img id="homeImg" src="{{ home[0].logo }}" />
   </div>
   <div class="stats">
     <div id="openTrails">
       <p class="pHead">Runs Open</p>
       <p>
-        {{ resorts[0].openDownHillTrails }}/{{
-          resorts[0].maxOpenDownHillTrails
-        }}
+        {{ home[0].openDownHillTrails }}/{{ home[0].maxOpenDownHillTrails }}
       </p>
     </div>
     <div id="snowCon">
       <p class="pHead">Snow Condition</p>
-      <p>{{ resorts[0].primarySurfaceCondition }}</p>
+      <p>{{ home[0].primarySurfaceCondition }}</p>
     </div>
     <div id="openLifts">
       <p class="pHead">Lifts Open</p>
-      <p>
-        {{ resorts[0].openDownHillLifts }}/{{ resorts[0].maxOpenDownHillLifts }}
-      </p>
+      <p>{{ home[0].openDownHillLifts }}/{{ home[0].maxOpenDownHillLifts }}</p>
     </div>
   </div>
   <div class="stats">
     <div id="base">
       <p class="pHead">Base Min/Base Max</p>
-      <p>{{ resorts[0].avgBaseDepthMin }}"/{{ resorts[0].avgBaseDepthMax }}"</p>
+      <p>{{ home[0].avgBaseDepthMin }}"/{{ home[0].avgBaseDepthMax }}"</p>
     </div>
     <div id="id">
       <p class="pHead">Skiable Acres</p>
-      <p>{{ resorts[0].maxOpenDownHillAcres }}</p>
+      <p>{{ home[0].maxOpenDownHillAcres }}</p>
     </div>
     <div id="parks">
       <p class="pHead">Terrain Parks Open</p>
-      <p>{{ resorts[0].terrainParkOpen }}</p>
+      <p>{{ home[0].terrainParkOpen }}</p>
     </div>
   </div>
 </div>
 <div id="bottomCards">
+  {% for resort in resorts %}
   <div class="homeCards">
-    <img src="{{ resorts[1].logo }}" class="regionImg" />
+    <img src="{{ resort.logo }}" class="regionImg" />
     <p>___________</p>
-    <h6>{{ resorts[1].maxOpenDownHillAcres }}</h6>
+    <h6>{{ resort.maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
+    <div class="lowerBut">
     <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
       <div id="resortSearch" style="display: none">
         <input
           type="text"
           name="resortId"
-          value="{{ resorts[1].resortId }}"
+          value="{{ resort.resortId }}"
           class="form-control"
         />
       </div>
@@ -63,59 +61,28 @@
         />
       </div>
     </form>
+    <form action="/resorts/home/?_method=DELETE" method="POST">
+        <div id="resortSearch" style="display: none">
+            <input
+              type="text"
+              name="resortId"
+              value="{{ resort.resortId }}"
+              class="form-control"
+            />
+          </div>
+          <div class="userEnter">
+            <input
+              class="homeButImg"
+              type="image"
+              src="/assets/cancel-close-delete-exit-remove-stop-x-icon-326993.png"
+              value="Add to My Resorts"
+              id="logInBut"
+            />
+          </div>
+      </form>
   </div>
-
-  <div class="homeCards">
-    <img src="{{ resorts[2].logo }}" class="regionImg" />
-    <p>___________</p>
-    <h6>{{ resorts[2].maxOpenDownHillAcres }}</h6>
-    <h6>Skiable Acres</h6>
-    <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
-      <div id="resortSearch" style="display: none">
-        <input
-          type="text"
-          name="resortId"
-          value="{{ resorts[2].resortId }}"
-          class="form-control"
-        />
-      </div>
-      <div class="userEnter">
-        <input
-          class="homeButImg"
-          type="image"
-          src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
-          value="Add to My Resorts"
-          id="logInBut"
-        />
-      </div>
-    </form>
   </div>
-
-  <div class="homeCards">
-    <img src="{{ resorts[3].logo }}" class="regionImg" />
-    <p>___________</p>
-    <h6>{{ resorts[3].maxOpenDownHillAcres }}</h6>
-    <h6>Skiable Acres</h6>
-    <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
-      <div id="resortSearch" style="display: none">
-        <input
-          type="text"
-          name="resortId"
-          value="{{ resorts[3].resortId }}"
-          class="form-control"
-        />
-      </div>
-      <div class="userEnter">
-        <input
-          class="homeButImg"
-          type="image"
-          src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
-          value="Add to My Resorts"
-          id="logInBut"
-        />
-      </div>
-    </form>
-  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
