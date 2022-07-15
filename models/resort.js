@@ -24,6 +24,12 @@ const resortSchema = new Schema({
     openDownHillLifts: Number,
     maxOpenDownHillLifts: Number,
     terrainParkOpen: String,
+    maxOpenDownHillAcres: String,
+    isHomeResort: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
 
 }, {
     timestamps: true

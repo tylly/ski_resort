@@ -53,7 +53,7 @@ a {
 
 .homeCards {
   width: 130px;
-  height: ;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   color: whitesmoke;
@@ -128,7 +128,10 @@ legend {
 #homeImg {
   margin-top: 20px;
   border-radius: 3px;
+  
 }
+
+
 
 .stats {
   margin-top: 50px;
@@ -139,8 +142,6 @@ legend {
 .pHead {
   text-decoration: underline;
 }
-
-
 
 p {
   font-size: 15px;
@@ -164,6 +165,11 @@ fieldset {
   margin-top: 20px;
 }
 
+#logInButReg {
+  margin-top: 20px;
+  font-size: 10px;
+}
+
 #resortSearch {
   margin-top: 70px;
 }
@@ -179,4 +185,21 @@ fieldset {
 
 #logInBut {
   margin-bottom: 20px;
+}
+
+.homeButImg {
+  height: 30px;
+  width: 30px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#pokiBut {
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
