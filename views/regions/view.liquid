@@ -1,0 +1,32 @@
+{% layout 'layout.liquid' %} {% block content %}
+
+
+<div id="bottomCards">
+  <div class="homeCards">
+    <img src='http://snocountry.com/ski_area_logos/{{regions[0].id}}logo.jpg' class="regionImg">
+<p>___________</p> 
+<h6>{{regions[0].maxOpenDownHillAcres}}</h6>
+<h6>Skiable Acres</h6>
+</div>
+  
+  <div class="homeCards">
+    <img src='http://snocountry.com/ski_area_logos/{{regions[1].id}}logo.jpg' class="regionImg">
+    <p>___________</p>  
+    <h6>{{regions[1].maxOpenDownHillAcres}}</h6>
+<h6>Skiable Acres</h6>
+  </div>
+ 
+  <div class="homeCards">
+    <img src='http://snocountry.com/ski_area_logos/{{regions[2].id}}logo.jpg' class="regionImg">
+    <p>___________</p>  
+    <h6>{{regions[2].maxOpenDownHillAcres}}</h6>
+<h6>Skiable Acres</h6>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

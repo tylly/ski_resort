@@ -7,16 +7,23 @@ const resortSchema = new Schema({
         unique: true
     },
     owner: {
-        type: Schema.Types.ObjectId, //a single User ._id field
+        type: Schema.Types.ObjectId, 
         ref: 'User', 
+        required: true
+    },
+    resortId: {
+        type: String,
         required: true
     },
     logo: String,
     avgBaseDepthMin: String,
     avgBaseDepthMax: String,
     primarySurfaceCondition: String,
-    openDownHillTrail: Number,
-    terrainParksOpen: Number,
+    openDownHillTrails: Number,
+    maxOpenDownHillTrails: Number,
+    openDownHillLifts: Number,
+    maxOpenDownHillLifts: Number,
+    terrainParkOpen: String,
 
 }, {
     timestamps: true

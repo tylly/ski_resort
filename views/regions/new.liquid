@@ -1,0 +1,27 @@
+{% layout 'layout.liquid' %} {% block content %}
+
+<div id="searchResortMain">
+  <form id="logInForm" action="/regions/new" method="POST">
+    <fieldset>
+      <legend>Search Region</legend>
+      <div id="resortSearch">
+        <input
+          type="text"
+          name="regionId"
+          placeholder="Region ID"
+          class="form-control"
+        />
+      </div>
+    </fieldset>
+    <div class="userEnter">
+      <input
+        type="submit"
+        value="Search"
+        class="btn btn-success"
+        id="logInBut"
+      />
+    </div>
+  </form>
+</div>
+
+{% endblock %}

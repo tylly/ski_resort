@@ -5,6 +5,7 @@ const app = require('liquid-express-views')(express())
 app.use(methodOverride('_method'))
 const userRoutes = require('./controller/user_routes')
 const resortRoutes = require('./controller/resort_routes')
+const regionRoutes = require('./controller/region_routes')
 app.use(express.urlencoded({ extended: false }))
 const session = require('express-session')
 app.use(express.static('public'))
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 
 app.use('/users', userRoutes)
 app.use('/resorts', resortRoutes)
+app.use('/regions', regionRoutes)
 
 
 const DATABASE_URI = process.env.DATABASE_URI

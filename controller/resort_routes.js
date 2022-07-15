@@ -14,8 +14,6 @@ router.get("/", async (req, res) => {
 
 router.get("/home", async (req, res) => {
   try {
-    // const url = `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=100001`;
-    // resp = await axios.get(url);
     resorts = await Resort.find({owner: req.session.userId})
     console.log(resorts)
     res.render("resorts/index", { resorts });
@@ -29,27 +27,30 @@ router.get("/resorts/add", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  console.log("FUCK");
   resp = await axios.get(
     `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=${req.body.resortId}`
   );
   resorts = resp.data.items[0];
-  console.log(resorts)
+  
   const newResort = {
     resortName: resorts.resortName,
+    resortId: resorts.id,
     logo: resorts.logo,
     primarySurfaceCondition: resorts.primarySurfaceCondition,
-    openDownHillTrail: resorts.maxOpenDownHillTrails,
+    maxOpenDownHillTrails: resorts.maxOpenDownHillTrails,
+    openDownHillTrails: resorts.openDownHillTrails,
     terrainParksOpen: resorts.terrainParksOpen,
+    terrainParkOpen: resorts.terrainParkOpen,
+    openDownHillLifts: resorts.openDownHillLifts,
+    maxOpenDownHillLifts: resorts.maxOpenDownHillLifts,
     owner: req.session.userId,
+    avgBaseDepthMax: resorts.avgBaseDepthMax,
+    avgBaseDepthMin: resorts.avgBaseDepthMin,
   };
   Resort.create(newResort);
   res.redirect("resorts/home");
 });
 
-router.get("/view", async (req, res) => {
-  res.render("/home");
-});
 
 /////////////////////
 //CREATE
@@ -63,6 +64,7 @@ router.post("/new", async (req, res) => {
     `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=${req.body.resortId}`
   );
   resorts = resp.data.items[0];
+  console.log(resorts)
   res.render("resorts/view", { resorts });
 });
 
