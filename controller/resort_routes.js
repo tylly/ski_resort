@@ -12,7 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-
 //DELETE - RESORT
 router.delete("/home", async (req, res) => {
   console.log(req.body);
@@ -20,7 +19,6 @@ router.delete("/home", async (req, res) => {
   await Resort.deleteOne({ resortId: destroy });
   res.redirect("http://localhost:3000/resorts/home");
 });
-
 
 //GET - INDEX
 router.get("/home", async (req, res) => {
@@ -41,8 +39,6 @@ router.get("/home", async (req, res) => {
   }
 });
 
-
-
 router.get("/resorts/add", async (req, res) => {
   res.redirect("resorts/home");
 });
@@ -56,10 +52,16 @@ router.get("/update", async (req, res) => {
 router.put("/update", async (req, res) => {
   let update = await req.body.resortId;
   console.log(update);
-  await Resort.updateMany({owner: req.session.userId}, { $set: { isHomeResort: false } });
-  await Resort.findOneAndUpdate({
-    $and: [{ owner: req.session.userId }, { resortId: update }], 
-  }, { $set: { isHomeResort: true } });
+  await Resort.updateMany(
+    { owner: req.session.userId },
+    { $set: { isHomeResort: false } }
+  );
+  await Resort.findOneAndUpdate(
+    {
+      $and: [{ owner: req.session.userId }, { resortId: update }],
+    },
+    { $set: { isHomeResort: true } }
+  );
   res.redirect("http://localhost:3000/resorts/home");
 });
 
