@@ -1,11 +1,8 @@
+const { stringify } = require('querystring')
 const mongoose = require('./connection')
 const { Schema, model } = mongoose
 const resortSchema = new Schema({
-    resortName: {
-        type: String,
-        required: true,
-        unique: true
-    },
+    resortName: String,
     owner: {
         type: Schema.Types.ObjectId, 
         ref: 'User', 

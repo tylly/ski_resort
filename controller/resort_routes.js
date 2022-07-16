@@ -12,22 +12,36 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.delete('/home', async (req, res) => {
-    console.log(req.body)
-    let destroy = await req.body.resortId;
-    await Resort.deleteOne({resortId: destroy})
-    res.redirect('http://localhost:3000/resorts/home')
-})
 
+//DELETE - RESORT
+router.delete("/home", async (req, res) => {
+  console.log(req.body);
+  let destroy = await req.body.resortId;
+  await Resort.deleteOne({ resortId: destroy });
+  res.redirect("http://localhost:3000/resorts/home");
+});
+
+
+//GET - INDEX
 router.get("/home", async (req, res) => {
   try {
-    let resorts = await Resort.find({$and: [{owner: req.session.userId}, {isHomeResort: false } ]});
-   let  home = await Resort.find({$and: [{owner: req.session.userId}, {isHomeResort: true } ]});
-    res.render("resorts/index", { resorts, home });
+    if (req.session.userId) {
+      let resorts = await Resort.find({
+        $and: [{ owner: req.session.userId }, { isHomeResort: false }],
+      });
+      let home = await Resort.find({
+        $and: [{ owner: req.session.userId }, { isHomeResort: true }],
+      });
+      res.render("resorts/index", { resorts, home });
+    } else {
+      res.redirect("http://localhost:3000/users/login");
+    }
   } catch {
     console.log("no");
   }
 });
+
+
 
 router.get("/resorts/add", async (req, res) => {
   res.redirect("resorts/home");
@@ -37,18 +51,15 @@ router.get("/update", async (req, res) => {
   res.redirect("http://localhost:3000/resorts/home");
 });
 
-
 //EDIT Resort
 //Reassigns home resort
 router.put("/update", async (req, res) => {
   let update = await req.body.resortId;
   console.log(update);
-  await Resort.updateMany({}, { $set: { isHomeResort: false } });
-  await Resort.findOneAndUpdate(
-    { resortId: update },
-    { $set: { isHomeResort: true } }
-  );
-
+  await Resort.updateMany({owner: req.session.userId}, { $set: { isHomeResort: false } });
+  await Resort.findOneAndUpdate({
+    $and: [{ owner: req.session.userId }, { resortId: update }], 
+  }, { $set: { isHomeResort: true } });
   res.redirect("http://localhost:3000/resorts/home");
 });
 
