@@ -44,4 +44,15 @@ router.get("/new", async (req, res) => {
     res.render("regions/view", { regions, regionId });
   });
 
+  //SHOW for User Regions
+
+  router.get('/show/:regionId', async (req, res) => {
+      regionId = req.params.regionId
+      resp = await axios.get(
+        `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&regions=${regionId}`
+      );
+      regions = resp.data.items
+      res.render('regions/show', {regions, regionId})
+  })
+
 module.exports = router;

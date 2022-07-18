@@ -36,11 +36,21 @@
   </div>
 </div>
 <div id="bottomCards">
-    <div class="homeCards">
-        <img class="regionHomeImg" src="/assets/pngaaa.com-178935.png">
-        <p>___________</p>
-        <h6>Your Regions</h6>
-    </div>
+  <div class="homeCards">
+    <img class="regionHomeImg" src="/assets/pngaaa.com-178935.png" />
+    <p>___________</p>
+    <h6>Your Regions</h6>
+    <ul class="regList">
+      {% for userRegion in userRegions %}
+      <a href="/regions/show/{{ userRegion.regionName }}" class="regLink">
+      <li class="regItem">
+        <img class="listImg" src="/assets/pngaaa.com-178935.png" />
+          {{ userRegion.regionName }}
+      </li>
+      </a>
+      {% endfor %}
+    </ul>
+  </div>
   {% for resort in resorts %}
   <div class="homeCards">
     <img src="{{ resort.logo }}" class="regionImg" />
@@ -48,45 +58,45 @@
     <h6>{{ resort.maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
     <div class="lowerBut">
-    <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
-      <div id="resortSearch" style="display: none">
-        <input
-          type="text"
-          name="resortId"
-          value="{{ resort.resortId }}"
-          class="form-control"
-        />
-      </div>
-      <div class="userEnter">
-        <input
-          class="homeButImg"
-          type="image"
-          src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
-          value="Add to My Resorts"
-          id="logInBut"
-        />
-      </div>
-    </form>
-    <form action="/resorts/home/?_method=DELETE" method="POST">
+      <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
         <div id="resortSearch" style="display: none">
-            <input
-              type="text"
-              name="resortId"
-              value="{{ resort.resortId }}"
-              class="form-control"
-            />
-          </div>
-          <div class="userEnter">
-            <input
-              class="homeButImg"
-              type="image"
-              src="/assets/cancel-close-delete-exit-remove-stop-x-icon-326993.png"
-              value="Add to My Resorts"
-              id="logInBut"
-            />
-          </div>
+          <input
+            type="text"
+            name="resortId"
+            value="{{ resort.resortId }}"
+            class="form-control"
+          />
+        </div>
+        <div class="userEnter">
+          <input
+            class="homeButImg"
+            type="image"
+            src="/assets/toppng.com-white-home-icon-no-background-1985x2016.png"
+            value="Add to My Resorts"
+            id="logInBut"
+          />
+        </div>
       </form>
-  </div>
+      <form action="/resorts/home/?_method=DELETE" method="POST">
+        <div id="resortSearch" style="display: none">
+          <input
+            type="text"
+            name="resortId"
+            value="{{ resort.resortId }}"
+            class="form-control"
+          />
+        </div>
+        <div class="userEnter">
+          <input
+            class="homeButImg"
+            type="image"
+            src="/assets/cancel-close-delete-exit-remove-stop-x-icon-326993.png"
+            value="Add to My Resorts"
+            id="logInBut"
+          />
+        </div>
+      </form>
+    </div>
   </div>
   {% endfor %}
 </div>
