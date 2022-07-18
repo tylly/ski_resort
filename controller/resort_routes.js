@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Resort = require("../models/resort");
+const Region = require('../models/region')
 
 const axios = require("axios");
 
@@ -30,7 +31,9 @@ router.get("/home", async (req, res) => {
       let home = await Resort.find({
         $and: [{ owner: req.session.userId }, { isHomeResort: true }],
       });
-      res.render("resorts/index", { resorts, home });
+      let userRegions = await Region.find({owner: req.session.userId})
+      console.log(userRegions)
+      res.render("resorts/index", { resorts, home, userRegions });
     } else {
       res.redirect("http://localhost:3000/users/login");
     }

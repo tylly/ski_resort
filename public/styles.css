@@ -255,7 +255,12 @@ fieldset {
 
 
 .regionHomeImg {
-  width: 20%;
+  height: 40px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+}
+
+.navHomeImg {
+  height: 40px;
 }
