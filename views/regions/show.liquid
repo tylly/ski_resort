@@ -1,35 +1,38 @@
 {% layout 'layout.liquid' %} {% block content %}
 
 <div id="regionMain">
-    <h3 id="regionHead">{{ regionId }}</h3>
-    <p>___________</p> 
-    <form action="/regions/delete/{{regionId}}/?_method=DELETE" method="POST">
-        <div id="resortSearch" style="display: none">
-          <input
-            type="text"
-            name="regionId"
-            value="{{ regionId }}"
-            class="form-control"
-          />
-        </div>
-        <div class="regionDelBox">
-          <input
-            class="regionDelete"
-            type="image"
-            src="/assets/cancel-close-delete-exit-remove-stop-x-icon-326993.png"
-          />
-        </div>
-      </form>   
+  <h3 id="regionHead">{{ regionId }}</h3>
+  <p>___________</p>
+  <form action="/regions/delete/{{ regionId }}/?_method=DELETE" method="POST">
+    <div id="resortSearch" style="display: none">
+      <input
+        type="text"
+        name="regionId"
+        value="{{ regionId }}"
+        class="form-control"
+      />
+    </div>
+    <div class="regionDelBox">
+      <input
+        class="regionDelete"
+        type="image"
+        src="/assets/cancel-close-delete-exit-remove-stop-x-icon-326993.png"
+      />
+    </div>
+  </form>
 </div>
 
 <div id="bottomCards">
   <div class="homeCards">
-    <img src='http://snocountry.com/ski_area_logos/{{regions[0].id}}logo.jpg' class="regionImg">
-<p>___________</p> 
-<h6>{{regions[0].maxOpenDownHillAcres}}</h6>
-<h6>Skiable Acres</h6>
-<form id="logInForm" action="/resorts" method="POST">
-    <div id="resortSearch" style="display:none">
+    <img
+      src="http://snocountry.com/ski_area_logos/{{ regions[0].id }}logo.jpg"
+      class="regionImg"
+    />
+    <p>___________</p>
+    <h6>{{ regions[0].maxOpenDownHillAcres }}</h6>
+    <h6>Skiable Acres</h6>
+    <form id="logInForm" action="/resorts" method="POST">
+      <div id="resortSearch" style="display: none">
         <input
           type="text"
           name="resortId"
@@ -37,24 +40,27 @@
           class="form-control"
         />
       </div>
-    <div class="userEnterr">
-      <input
-        type="submit"
-        value="Add to My Resorts"
-        class="btn btn-success"
-        id="logInButReg"
-      />
-    </div>
-  </form>
-</div>
-  
+      <div class="userEnterr">
+        <input
+          type="submit"
+          value="Add to My Resorts"
+          class="btn btn-success"
+          id="logInButReg"
+        />
+      </div>
+    </form>
+  </div>
+
   <div class="homeCards">
-    <img src='http://snocountry.com/ski_area_logos/{{regions[1].id}}logo.jpg' class="regionImg">
-    <p>___________</p>  
-    <h6>{{regions[1].maxOpenDownHillAcres}}</h6>
-<h6>Skiable Acres</h6>
-<form id="logInForm" action="/resorts" method="POST">
-    <div id="resortSearch" style="display:none">
+    <img
+      src="http://snocountry.com/ski_area_logos/{{ regions[1].id }}logo.jpg"
+      class="regionImg"
+    />
+    <p>___________</p>
+    <h6>{{ regions[1].maxOpenDownHillAcres }}</h6>
+    <h6>Skiable Acres</h6>
+    <form id="logInForm" action="/resorts" method="POST">
+      <div id="resortSearch" style="display: none">
         <input
           type="text"
           name="resortId"
@@ -62,24 +68,27 @@
           class="form-control"
         />
       </div>
-    <div class="userEnterr">
-      <input
-        type="submit"
-        value="Add to My Resorts"
-        class="btn btn-success"
-        id="logInButReg"
-      />
-    </div>
-  </form>
+      <div class="userEnterr">
+        <input
+          type="submit"
+          value="Add to My Resorts"
+          class="btn btn-success"
+          id="logInButReg"
+        />
+      </div>
+    </form>
   </div>
- 
+
   <div class="homeCards">
-    <img src='http://snocountry.com/ski_area_logos/{{regions[2].id}}logo.jpg' class="regionImg">
-    <p>___________</p>  
-    <h6>{{regions[2].maxOpenDownHillAcres}}</h6>
-<h6>Skiable Acres</h6>
-<form id="logInForm" action="/resorts" method="POST">
-    <div id="resortSearch" style="display:none">
+    <img
+      src="http://snocountry.com/ski_area_logos/{{ regions[2].id }}logo.jpg"
+      class="regionImg"
+    />
+    <p>___________</p>
+    <h6>{{ regions[2].maxOpenDownHillAcres }}</h6>
+    <h6>Skiable Acres</h6>
+    <form id="logInForm" action="/resorts" method="POST">
+      <div id="resortSearch" style="display: none">
         <input
           type="text"
           name="resortId"
@@ -87,15 +96,15 @@
           class="form-control"
         />
       </div>
-    <div class="userEnterr">
-      <input
-        type="submit"
-        value="Add to My Resorts"
-        class="btn btn-success"
-        id="logInButReg"
-      />
-    </div>
-  </form>
+      <div class="userEnterr">
+        <input
+          type="submit"
+          value="Add to My Resorts"
+          class="btn btn-success"
+          id="logInButReg"
+        />
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}
