@@ -3,6 +3,7 @@
   <div id="logoCont">
     <img id="homeImg" src="{{ home[0].logo }}" />
   </div>
+  <p>___________</p>
   <div class="stats">
     <div id="openTrails">
       <p class="pHead">Runs Open</p>
@@ -35,6 +36,9 @@
   </div>
 </div>
 <div id="bottomCards">
+    <div class="homeCards">
+        <h6>Your Regions</h6>
+    </div>
   {% for resort in resorts %}
   <div class="homeCards">
     <img src="{{ resort.logo }}" class="regionImg" />

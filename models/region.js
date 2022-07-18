@@ -1,7 +1,12 @@
 const mongoose = require('./connection')
 const { Schema, model } = mongoose
 const regionSchema = new Schema({
-    RegionName: String
+    regionName: String,
+    owner: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User', 
+        required: true
+    },
 }, {
     timestamps: true
 })

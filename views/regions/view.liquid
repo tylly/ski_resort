@@ -1,5 +1,28 @@
 {% layout 'layout.liquid' %} {% block content %}
 
+<div id="regionMain">
+    <h3>{{ regionId }}</h3>
+    <p>___________</p> 
+    <img class="regionHomeImg" src="/assets/pngaaa.com-178935.png">
+    <form id="logInForm" action="/regions" method="POST">
+        <div id="resortSearch" style="display:none">
+            <input
+              type="text"
+              name="resortId"
+              value="{{ regionId }}"
+              class="form-control"
+            />
+          </div>
+        <div class="userEnterr">
+          <input
+            type="submit"
+            value="Add to My Resorts"
+            class="btn btn-success"
+            id="logInButReg"
+          />
+        </div>
+      </form>
+</div>
 
 <div id="bottomCards">
   <div class="homeCards">
@@ -7,14 +30,24 @@
 <p>___________</p> 
 <h6>{{regions[0].maxOpenDownHillAcres}}</h6>
 <h6>Skiable Acres</h6>
-<div class="userEnterReg">
-    <input
-      type="submit"
-      value="Add to My Resorts"
-      class="btn btn-success"
-      id="logInButReg"
-    />
-  </div>
+<form id="logInForm" action="/resorts" method="POST">
+    <div id="resortSearch" style="display:none">
+        <input
+          type="text"
+          name="resortId"
+          value="{{ regions[0].id }}"
+          class="form-control"
+        />
+      </div>
+    <div class="userEnterr">
+      <input
+        type="submit"
+        value="Add to My Resorts"
+        class="btn btn-success"
+        id="logInButReg"
+      />
+    </div>
+  </form>
 </div>
   
   <div class="homeCards">
@@ -22,14 +55,24 @@
     <p>___________</p>  
     <h6>{{regions[1].maxOpenDownHillAcres}}</h6>
 <h6>Skiable Acres</h6>
-<div class="userEnterReg">
-    <input
-      type="submit"
-      value="Add to My Resorts"
-      class="btn btn-success"
-      id="logInButReg"
-    />
-  </div>
+<form id="logInForm" action="/resorts" method="POST">
+    <div id="resortSearch" style="display:none">
+        <input
+          type="text"
+          name="resortId"
+          value="{{ regions[1].id }}"
+          class="form-control"
+        />
+      </div>
+    <div class="userEnterr">
+      <input
+        type="submit"
+        value="Add to My Resorts"
+        class="btn btn-success"
+        id="logInButReg"
+      />
+    </div>
+  </form>
   </div>
  
   <div class="homeCards">
@@ -37,14 +80,24 @@
     <p>___________</p>  
     <h6>{{regions[2].maxOpenDownHillAcres}}</h6>
 <h6>Skiable Acres</h6>
-<div class="userEnterReg">
-    <input
-      type="submit"
-      value="Add to My Resorts"
-      class="btn btn-success"
-      id="logInButReg"
-    />
-  </div>
+<form id="logInForm" action="/resorts" method="POST">
+    <div id="resortSearch" style="display:none">
+        <input
+          type="text"
+          name="resortId"
+          value="{{ regions[2].id }}"
+          class="form-control"
+        />
+      </div>
+    <div class="userEnterr">
+      <input
+        type="submit"
+        value="Add to My Resorts"
+        class="btn btn-success"
+        id="logInButReg"
+      />
+    </div>
+  </form>
   </div>
 </div>
 

@@ -65,6 +65,10 @@ router.put("/update", async (req, res) => {
   res.redirect("http://localhost:3000/resorts/home");
 });
 
+
+/////////////////////
+//CREATE
+/////////////////////
 router.post("/", async (req, res) => {
   resp = await axios.get(
     `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=${req.body.resortId}`
@@ -91,9 +95,7 @@ router.post("/", async (req, res) => {
   res.redirect("resorts/home");
 });
 
-/////////////////////
-//CREATE
-/////////////////////
+
 router.get("/new", (req, res) => {
   res.render("resorts/new");
 });

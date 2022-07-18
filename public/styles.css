@@ -45,6 +45,24 @@ a {
   box-shadow: 0 0 10px black;
 }
 
+#regionMain {
+  position: relative;
+  width: 40%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  color: whitesmoke;
+  transition: 0.3s ease-in-out;
+  -webkit-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 #homeMain:hover {
   -webkit-box-shadow: 0 0 10px rgb(111, 113, 122);
   box-shadow: 0 0 10px rgb(111, 113, 122);
@@ -185,6 +203,7 @@ fieldset {
 #logInButReg {
   margin-top: 20px;
   font-size: 10px;
+  margin-bottom: 10px;
 }
 
 #resortSearch {
@@ -232,4 +251,11 @@ fieldset {
 .lowerBut {
   display: flex;
   justify-content: space-around;
+}
+
+
+.regionHomeImg {
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
 }

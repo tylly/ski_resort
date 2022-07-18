@@ -38,7 +38,11 @@ router.post('/signup', async (req, res) => {
 //////////////////////////////
 //log in routes
 router.get('/login', (req, res) => {
+    if (req.session.userId){
+        res.redirect('http://localhost:3000/resorts/home')
+    }else{
     res.render('users/login')
+    }
 })
 
 router.post('/login', async (req, res) => {

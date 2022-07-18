@@ -4,6 +4,7 @@ const Region = require("../models/region");
 
 const axios = require("axios");
 
+
 router.get("/", async (req, res) => {
   try {
     res.render("regions/index");
@@ -11,6 +12,16 @@ router.get("/", async (req, res) => {
     console.log("error");
   }
 });
+
+router.post("/", async (req, res) => {
+    console.log(req.body)
+    const newRegion = {
+      regionName: regionId,
+      owner: req.session.userId
+    };
+    Region.create(newRegion);
+    res.redirect("resorts/home");
+  });
 
 router.get("/new", async (req, res) => {
     try {
@@ -24,11 +35,13 @@ router.get("/new", async (req, res) => {
     resp = await axios.get(
       `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&regions=${req.body.regionId}`
     );
- 
+        
     regions = resp.data.items
-    console.log(regions)
+    regionId = req.body.regionId
+    regionId = regionId.toUpperCase()
+    console.log(req.body)
 
-    res.render("regions/view", { regions });
+    res.render("regions/view", { regions, regionId });
   });
 
 module.exports = router;
