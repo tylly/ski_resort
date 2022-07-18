@@ -3,6 +3,7 @@ const router = express.Router();
 const Region = require("../models/region");
 
 const axios = require("axios");
+const Resort = require("../models/resort");
 
 
 router.get("/", async (req, res) => {
@@ -12,6 +13,15 @@ router.get("/", async (req, res) => {
     console.log("error");
   }
 });
+
+//DELETE region
+router.delete("/delete/:regionName", async (req, res) => {
+    destroy = req.body.regionId
+    await Region.deleteOne({
+        $and: [{owner: req.session.userId}, { regionName: destroy }]
+    })
+    res.redirect("http://localhost:3000/resorts/home");
+  });
 
 router.post("/", async (req, res) => {
     console.log(req.body)

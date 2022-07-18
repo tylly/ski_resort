@@ -2,7 +2,24 @@
 
 <div id="regionMain">
     <h3 id="regionHead">{{ regionId }}</h3>
-    <p>___________</p>    
+    <p>___________</p> 
+    <form action="/regions/delete/{{regionId}}/?_method=DELETE" method="POST">
+        <div id="resortSearch" style="display: none">
+          <input
+            type="text"
+            name="regionId"
+            value="{{ regionId }}"
+            class="form-control"
+          />
+        </div>
+        <div class="regionDelBox">
+          <input
+            class="regionDelete"
+            type="image"
+            src="/assets/cancel-close-delete-exit-remove-stop-x-icon-326993.png"
+          />
+        </div>
+      </form>   
 </div>
 
 <div id="bottomCards">

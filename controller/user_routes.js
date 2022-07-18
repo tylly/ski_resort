@@ -72,8 +72,9 @@ router.post('/login', async (req, res) => {
         })
 })
 
+
+//Logout
 router.get('/logout', (req, res) => {
-    //destroy session and redirect to main page
     req.session.destroy(ret => {
         console.log('this is returned from session destroy', ret)
         console.log('session has been destroyed')

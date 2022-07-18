@@ -15,9 +15,10 @@ router.get("/", async (req, res) => {
 
 //DELETE - RESORT
 router.delete("/home", async (req, res) => {
-  console.log(req.body);
   let destroy = await req.body.resortId;
-  await Resort.deleteOne({ resortId: destroy });
+  await Resort.deleteOne({
+    $and: [{ owner: req.session.userId }, { resortId: destroy }],
+  });
   res.redirect("http://localhost:3000/resorts/home");
 });
 
@@ -32,7 +33,6 @@ router.get("/home", async (req, res) => {
         $and: [{ owner: req.session.userId }, { isHomeResort: true }],
       });
       let userRegions = await Region.find({owner: req.session.userId})
-      console.log(userRegions)
       res.render("resorts/index", { resorts, home, userRegions });
     } else {
       res.redirect("http://localhost:3000/users/login");
@@ -54,7 +54,6 @@ router.get("/update", async (req, res) => {
 //Reassigns home resort
 router.put("/update", async (req, res) => {
   let update = await req.body.resortId;
-  console.log(update);
   await Resort.updateMany(
     { owner: req.session.userId },
     { $set: { isHomeResort: false } }
@@ -108,7 +107,6 @@ router.post("/new", async (req, res) => {
     `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=${req.body.resortId}`
   );
   resorts = resp.data.items[0];
-  console.log(resorts);
   res.render("resorts/view", { resorts });
 });
 
