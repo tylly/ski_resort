@@ -3,6 +3,13 @@
   <div id="logoCont">
     <img id="viewImg" src="{{ resorts.logo }}" />
   </div>
+  <div class="homeTop">
+    <h3>{{ homeWeather.data.main.temp }} °F</h3>
+  </div>
+  <div class="homeTop">
+    <h3>{{homeWeather.data.weather[0].description}}</h3>
+  </div>
+  <p>___________</p>
   <div class="stats">
     <div id="openTrails">
       <p class="pHead">Runs Open</p>

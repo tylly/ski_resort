@@ -31,6 +31,8 @@
     <p>___________</p>
     <h6>{{ regions[0].maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
+    <p class="weather">{{ cardWeather[0].main.temp }} °F</p>
+    <p class="weather">{{ cardWeather[0].weather[0].description }}</p>
     <form id="logInForm" action="/resorts" method="POST">
       <div id="resortSearch" style="display: none">
         <input
@@ -59,6 +61,8 @@
     <p>___________</p>
     <h6>{{ regions[1].maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
+    <p class="weather">{{ cardWeather[1].main.temp }} °F</p>
+    <p class="weather">{{ cardWeather[1].weather[0].description }}</p>
     <form id="logInForm" action="/resorts" method="POST">
       <div id="resortSearch" style="display: none">
         <input
@@ -87,6 +91,8 @@
     <p>___________</p>
     <h6>{{ regions[2].maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
+    <p class="weather">{{ cardWeather[2].main.temp }} °F</p>
+    <p class="weather">{{ cardWeather[2].weather[0].description }}</p>
     <form id="logInForm" action="/resorts" method="POST">
       <div id="resortSearch" style="display: none">
         <input

@@ -160,7 +160,12 @@ router.post("/new", async (req, res) => {
     `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=${req.body.resortId}`
   );
   resorts = resp.data.items[0];
-  res.render("resorts/view", { resorts });
+  let homeState = await State.find({ code: resorts.state });
+  let homeWeather = await axios.get(
+    `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
+  );
+  homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp)
+  res.render("resorts/view", { resorts, homeWeather });
 });
 
 //My resort SHOW
