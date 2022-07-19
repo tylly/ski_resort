@@ -37,6 +37,8 @@ router.get("/home", async (req, res) => {
       let homeState = await State.find({ code: home[0].state });
       //thank you fei
       //linking state codes to their names so they place nice with openweather
+      //i need to fix this and not query the database every time. i need to get all docs with a find and then filter.
+      //USE FILTER METHOD
       let cardState = await Promise.all(
         resorts.map(async (i) => {
           try {
@@ -47,21 +49,34 @@ router.get("/home", async (req, res) => {
           }
         })
       );
+    // let allStates = await State.find({})
+    // let cardStates = await Promise.all(allStates.map((i) => {
+    //     try{
+    //         for (let j = 0; j < resorts.length; i++){
+    //             if (resorts[j].state === i.state){
+    //                 return i.state
+    //             }
+    //         }
+    //     } catch{
+    //         console.log('error')
+    //     } console.log(cardStates)
+    // }))
       //Getting weather the the designated home resort
       let homeWeather = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
       );
+      //console.log(homeWeather)
       //getting weather for all other resorts followed. again thank you fei for the sync iterator tip
       let cardWeather = await Promise.all(
         cardState.map(async (i) => {
           try {
             let eachWeather = await axios.get(
               `https://api.openweathermap.org/data/2.5/weather?q=${i.name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
-            );
+            ); console.log(eachWeather.data)
             return eachWeather.data;
           } catch {
-            console.log("ruh roh");
-          }
+            //console.log("ruh roh");
+          }console.log(cardWeather)
         })
       );
       res.render("resorts/index", {

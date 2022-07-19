@@ -6,6 +6,7 @@ db.on("open", () => {
     { name: "Alabama", code: "AL"},
     { name: "Alaska", code: "AK"},
     { name: "Arizona", code: "AZ"},
+    { name: "Australia", code: "AU"},
     { name: "Arkansas", code: "AR"},
     { name: "California", code: "CA"},
     { name: "Colorado", code: "CO"},
