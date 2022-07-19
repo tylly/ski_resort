@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Resort = require("../models/resort");
-const Region = require('../models/region')
+const Region = require("../models/region");
 
 const axios = require("axios");
 
@@ -32,7 +32,7 @@ router.get("/home", async (req, res) => {
       let home = await Resort.find({
         $and: [{ owner: req.session.userId }, { isHomeResort: true }],
       });
-      let userRegions = await Region.find({owner: req.session.userId})
+      let userRegions = await Region.find({ owner: req.session.userId });
       res.render("resorts/index", { resorts, home, userRegions });
     } else {
       res.redirect("http://localhost:3000/users/login");
@@ -67,7 +67,6 @@ router.put("/update", async (req, res) => {
   res.redirect("http://localhost:3000/resorts/home");
 });
 
-
 /////////////////////
 //CREATE
 /////////////////////
@@ -80,6 +79,7 @@ router.post("/", async (req, res) => {
   const newResort = {
     resortName: resorts.resortName,
     resortId: resorts.id,
+    state: resorts.state,
     logo: resorts.logo,
     primarySurfaceCondition: resorts.primarySurfaceCondition,
     maxOpenDownHillTrails: resorts.maxOpenDownHillTrails,
@@ -97,7 +97,6 @@ router.post("/", async (req, res) => {
   res.redirect("resorts/home");
 });
 
-
 router.get("/new", (req, res) => {
   res.render("resorts/new");
 });
@@ -108,6 +107,23 @@ router.post("/new", async (req, res) => {
   );
   resorts = resp.data.items[0];
   res.render("resorts/view", { resorts });
+});
+
+//My resort SHOW
+router.get("/show/:resortId", async (req, res) => {
+  try {
+    let resortsArr = await Resort.find({
+      $and: [
+        { owner: req.session.userId },
+        { resortId: req.params.resortId },
+      ],
+    });
+    let resorts = resortsArr[0]
+    console.log(resorts)
+    res.render("resorts/show", { resorts });
+  } catch {
+    console.log("ruh roh");
+  }
 });
 
 module.exports = router;

@@ -12,6 +12,7 @@ const resortSchema = new Schema({
         type: String,
         required: true
     },
+    state: String,
     logo: String,
     avgBaseDepthMin: String,
     avgBaseDepthMax: String,

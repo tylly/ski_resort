@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Region = require("../models/region");
-
-const axios = require("axios");
 const Resort = require("../models/resort");
+const axios = require("axios");
 
 router.get("/", async (req, res) => {
   try {

@@ -31,10 +31,6 @@ router.post('/signup', async (req, res) => {
         })
 })
 
-
-
-
-
 //////////////////////////////
 //log in routes
 router.get('/login', (req, res) => {
