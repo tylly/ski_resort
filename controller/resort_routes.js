@@ -33,64 +33,93 @@ router.get("/home", async (req, res) => {
       let home = await Resort.find({
         $and: [{ owner: req.session.userId }, { isHomeResort: true }],
       });
-      let userRegions = await Region.find({ owner: req.session.userId });
-      let homeState = await State.find({ code: home[0].state });
-      //thank you fei
-      //linking state codes to their names so they place nice with openweather
-      //i need to fix this and not query the database every time. i need to get all docs with a find and then filter.
-      //USE FILTER METHOD
-      let cardState = await Promise.all(
-        resorts.map(async (i) => {
-          try {
-            let cardName = await State.find({ code: i.state });
-            return cardName[0];
-          } catch {
-            console.log("ruh roh");
-          }
-        })
-      );
-    // let allStates = await State.find({})
-    // let cardStates = await Promise.all(allStates.map((i) => {
-    //     try{
-    //         for (let j = 0; j < resorts.length; i++){
-    //             if (resorts[j].state === i.state){
-    //                 return i.state
-    //             }
-    //         }
-    //     } catch{
-    //         console.log('error')
-    //     } console.log(cardStates)
-    // }))
-      //Getting weather the the designated home resort
-      let homeWeather = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
-      );
-      homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp)
-      //getting weather for all other resorts followed. again thank you fei for the sync iterator tip
-      let cardWeather = await Promise.all(
-        cardState.map(async (i) => {
-          try {
-            let eachWeather = await axios.get(
-              `https://api.openweathermap.org/data/2.5/weather?q=${i.name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
-            );
-            return eachWeather.data;
-          } catch {
-            console.log("ruh roh");
-          }
-        })
-      );
-      res.render("resorts/index", {
-        resorts,
-        home,
-        userRegions,
-        homeWeather,
-        cardWeather,
-      });
+      if (home.length > 0
+        ) {
+        
+
+        console.log(home.length)
+        
+        let userRegions = await Region.find({ owner: req.session.userId });
+        let homeState = await State.find({ code: home[0].state });
+        
+        //thank you fei
+        //linking state codes to their names so they place nice with openweather
+        //i need to fix this and not query the database every time. i need to get all docs with a find and then filter.
+        //USE FILTER METHOD
+        let cardState = await Promise.all(
+          resorts.map(async (i) => {
+            try {
+              let cardName = await State.find({ code: i.state });
+              return cardName[0];
+            } catch {
+              console.log("ruh roh");
+            }
+          })
+        );
+        let homeWeather = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
+        );
+        homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
+        //getting weather for all other resorts followed. again thank you fei for the sync iterator tip
+        let cardWeather = await Promise.all(
+          cardState.map(async (i) => {
+            try {
+              let eachWeather = await axios.get(
+                `https://api.openweathermap.org/data/2.5/weather?q=${i.name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
+              );
+              return eachWeather.data;
+            } catch {
+              console.log("ruh roh");
+            }
+          })
+        );
+        res.render("resorts/index", {
+          resorts,
+          home,
+          userRegions,
+          homeWeather,
+          cardWeather,
+        });
+      } else if (
+        resorts.length > 0) {
+          console.log(resorts)
+        let cardState = await Promise.all(
+          resorts.map(async (i) => {
+            try {
+              let cardName = await State.find({ code: i.state });
+              return cardName[0];
+            } catch {
+              console.log("ruh roh");
+            }
+          })
+        );
+        console.log(cardState)
+        let cardWeather = await Promise.all(
+          cardState.map(async (i) => {
+            try {
+              let eachWeather = await axios.get(
+                `https://api.openweathermap.org/data/2.5/weather?q=${i.name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
+              );
+              return eachWeather.data;
+            } catch {
+              console.log("ruh roh");
+            }
+          })
+          
+        );
+        console.log(cardWeather)
+        //render if user has resorts but no home resort
+        res.render('resorts/index', {resorts, cardWeather})
+      } else {
+        //render if user has absolutely no data
+        res.render('resorts/index')
+      }
     } else {
       res.redirect("http://localhost:3000/users/login");
     }
   } catch {
     console.log("no");
+    res.render("resorts/index");
   }
 });
 
@@ -162,7 +191,7 @@ router.post("/new", async (req, res) => {
   let homeWeather = await axios.get(
     `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
   );
-  homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp)
+  homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
   res.render("resorts/view", { resorts, homeWeather });
 });
 
@@ -178,7 +207,7 @@ router.get("/show/:resortId", async (req, res) => {
     let homeWeather = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
     );
-    console.log(homeWeather)
+    console.log(homeWeather);
     res.render("resorts/show", { resorts, homeWeather });
   } catch {
     console.log("ruh roh");
