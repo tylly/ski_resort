@@ -332,3 +332,7 @@ fieldset {
 .weather {
   margin-bottom: 0px;
 }
+
+#viewImg {
+  margin-top: 20px;
+}

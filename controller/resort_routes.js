@@ -79,8 +79,6 @@ router.get("/home", async (req, res) => {
           }
         })
       );
-   
-      console.log(cardWeather)
       res.render("resorts/index", {
         resorts,
         home,
@@ -176,7 +174,12 @@ router.get("/show/:resortId", async (req, res) => {
     });
     let resorts = resortsArr[0];
     console.log(resorts);
-    res.render("resorts/show", { resorts });
+    let homeState = await State.find({ code: resorts.state });
+    let homeWeather = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
+    );
+    console.log(homeWeather)
+    res.render("resorts/show", { resorts, homeWeather });
   } catch {
     console.log("ruh roh");
   }
