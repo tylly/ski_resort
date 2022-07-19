@@ -80,7 +80,7 @@ a {
 
 .homeCards {
   width: 130px;
-  min-height: 180px;
+  height: 270px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   color: whitesmoke;
@@ -195,6 +195,11 @@ fieldset {
 
 .userEnter {
   margin-top: 100%;
+  
+}
+
+.userEnterHome {
+
   
 }
 
@@ -315,4 +320,14 @@ fieldset {
 
 .regionDelBox:hover {
   background-color: rgba(255, 255, 255, 0.571);
+}
+
+.homeTop {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.weather {
+  margin-bottom: 0px;
 }

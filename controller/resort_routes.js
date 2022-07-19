@@ -65,20 +65,22 @@ router.get("/home", async (req, res) => {
       let homeWeather = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
       );
-      //console.log(homeWeather)
+      homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp)
       //getting weather for all other resorts followed. again thank you fei for the sync iterator tip
       let cardWeather = await Promise.all(
         cardState.map(async (i) => {
           try {
             let eachWeather = await axios.get(
               `https://api.openweathermap.org/data/2.5/weather?q=${i.name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
-            ); console.log(eachWeather.data)
+            );
             return eachWeather.data;
           } catch {
-            //console.log("ruh roh");
-          }console.log(cardWeather)
+            console.log("ruh roh");
+          }
         })
       );
+   
+      console.log(cardWeather)
       res.render("resorts/index", {
         resorts,
         home,

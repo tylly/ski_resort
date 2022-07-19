@@ -5,6 +5,12 @@
       <img id="homeImg" src="{{ home[0].logo }}" />
     </a>
   </div>
+  <div class="homeTop">
+  <h3>{{ homeWeather.data.main.temp }} °F</h3>
+</div>
+<div class="homeTop">
+  <h3>{{homeWeather.data.weather[0].description}}</h3>
+</div>
   <p>___________</p>
   <div class="stats">
     <div id="openTrails">
@@ -54,6 +60,7 @@
     </ul>
   </div>
   {% for resort in resorts %}
+ 
   <div class="homeCards">
     <a href="/resorts/show/{{ resort.resortId }}">
       <img src="{{ resort.logo }}" class="regionImg" />
@@ -61,6 +68,8 @@
     <p>___________</p>
     <h6>{{ resort.maxOpenDownHillAcres }}</h6>
     <h6>Skiable Acres</h6>
+    <p class="weather">{{ cardWeather[forloop.index0].main.temp }} °F</p>
+    <p class="weather">{{ cardWeather[forloop.index0].weather[0].description }}</p>
     <div class="lowerBut">
       <form id="logInForm" action="/resorts/update?_method=PUT" method="POST">
         <div id="resortSearch" style="display: none">
@@ -71,7 +80,7 @@
             class="form-control"
           />
         </div>
-        <div class="userEnter">
+        <div class="userEnterHome">
           <input
             class="homeButImg"
             type="image"
@@ -90,7 +99,7 @@
             class="form-control"
           />
         </div>
-        <div class="userEnter">
+        <div class="userEnterHome">
           <input
             class="homeButImg"
             type="image"
