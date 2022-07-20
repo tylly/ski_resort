@@ -192,7 +192,7 @@ router.get("/show/:resortId", async (req, res) => {
     let homeWeather = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
     );
-    console.log(homeWeather);
+    homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp)
     res.render("resorts/show", { resorts, homeWeather });
   } catch {
     console.log("ruh roh");

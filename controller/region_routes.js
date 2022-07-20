@@ -70,11 +70,12 @@ router.get("/show/:regionId", async (req, res) => {
     }
   });
   //getting weather for each resort in region
+  console.log(cardState);
   let cardWeather = await Promise.all(
     cardState.map(async (i) => {
       try {
         let eachWeather = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${i[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
+          `https://api.openweathermap.org/data/2.5/weather?q=${i.name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
         );
         return eachWeather.data;
       } catch {
@@ -82,7 +83,11 @@ router.get("/show/:regionId", async (req, res) => {
       }
     })
   );
-  console.log(cardWeather)
+  //round temps
+  cardWeather.forEach((i) => {
+    i.main.temp = Math.round(i.main.temp);
+  });
+
   res.render("regions/show", { regions, regionId, cardWeather });
 });
 
