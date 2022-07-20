@@ -62,16 +62,14 @@ router.get("/show/:regionId", async (req, res) => {
   );
   let regions = resp.data.items;
   //i need to fix this so its not looping through database
-  let cardState = await Promise.all(
-    regions.map(async (i) => {
-      try {
-        let cardName = await State.find({ code: i.state });
-        return cardName;
-      } catch {
-        console.log("ruh roh");
+  let testStates = await State.find({});
+  let cardState = regions.map((i) => {
+    for (let j = 0; j < testStates.length; j++) {
+      if (i.state === testStates[j].code) {
+        return testStates[j];
       }
-    })
-  )
+    }
+  });
   //getting weather for each resort in region
   let cardWeather = await Promise.all(
     cardState.map(async (i) => {
