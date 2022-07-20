@@ -350,6 +350,7 @@ fieldset {
 
 #viewImg {
   margin-top: 20px;
+  border-radius: 4px;
 }
 
 .gotNone {

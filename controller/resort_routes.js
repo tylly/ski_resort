@@ -168,9 +168,10 @@ router.get("/new", (req, res) => {
 });
 
 router.post("/new", async (req, res) => {
+  try{
   resp = await axios.get(
-    `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=${req.body.resortId}`
-  );
+    `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&name=${req.body.resortId}`
+  )
   resorts = resp.data.items[0];
   let homeState = await State.find({ code: resorts.state });
   let homeWeather = await axios.get(
@@ -178,6 +179,9 @@ router.post("/new", async (req, res) => {
   );
   homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
   res.render("resorts/view", { resorts, homeWeather });
+}
+catch{res.redirect('http://localhost:3000/resorts/new')}
+  
 });
 
 //My resort SHOW
