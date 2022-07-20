@@ -2,17 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Resort = require("../models/resort");
 const Region = require("../models/region");
-
-const axios = require("axios");
 const State = require("../models/state");
-
-router.get("/", async (req, res) => {
-  try {
-    res.send("help");
-  } catch {
-    console.log("error");
-  }
-});
+const axios = require("axios");
 
 //DELETE - RESORT
 router.delete("/home", async (req, res) => {
@@ -54,7 +45,7 @@ router.get("/home", async (req, res) => {
           `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
         );
         homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
-        //getting weather for all other resorts followed. again thank you fei for the sync iterator tip
+        //getting weather for all other resorts followed. Thank you Fei for the async iterator tip
         let cardWeather = await Promise.all(
           cardState.map(async (i) => {
             try {
@@ -77,16 +68,14 @@ router.get("/home", async (req, res) => {
       } else if (
         resorts.length > 0) {
           console.log(resorts)
-        let cardState = await Promise.all(
-          resorts.map(async (i) => {
-            try {
-              let cardName = await State.find({ code: i.state });
-              return cardName[0];
-            } catch {
-              console.log("ruh roh");
+          let testStates = await State.find({})
+          let cardState = resorts.map((i) => {
+            for (let j = 0; j < testStates.length; j++){
+              if (i.state === testStates[j].code){
+                return testStates[j]
+              }
             }
           })
-        );
         console.log(cardState)
         let cardWeather = await Promise.all(
           cardState.map(async (i) => {
