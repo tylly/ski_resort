@@ -64,7 +64,8 @@ router.get("/home", async (req, res) => {
           cardWeather,
         });
       } else if (resorts.length > 0) {
-        console.log(resorts);
+        //if a user has resorts but no designated home resort
+        //getting state names to be able to use openweather api
         let testStates = await State.find({});
         let cardState = resorts.map((i) => {
           for (let j = 0; j < testStates.length; j++) {
@@ -88,7 +89,7 @@ router.get("/home", async (req, res) => {
         );
         console.log(cardWeather);
         //render if user has resorts but no home resort
-        res.render("resorts/index", { resorts, cardWeather });
+        res.render("resorts/index1", { resorts, cardWeather });
       } else {
         //render if user has absolutely no data
         res.render("resorts/index0");
