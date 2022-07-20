@@ -22,7 +22,7 @@ app.use(
 	})
 )
 app.get('/', (req, res) => {
-    res.send('hooked')
+    res.redirect('http://localhost:3000/resorts/home')
 })
 
 
