@@ -61,7 +61,6 @@ router.get("/show/:regionId", async (req, res) => {
     `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&regions=${regionId}`
   );
   let regions = resp.data.items;
-  //i need to fix this so its not looping through database
   let testStates = await State.find({});
   let cardState = regions.map((i) => {
     for (let j = 0; j < testStates.length; j++) {

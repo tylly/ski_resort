@@ -56,6 +56,11 @@ router.get("/home", async (req, res) => {
             }
           })
         );
+        //round temps
+        cardWeather.forEach((i) => {
+          i.main.temp = Math.round(i.main.temp);
+        });
+
         res.render("resorts/index", {
           resorts,
           home,
