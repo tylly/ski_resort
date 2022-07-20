@@ -91,7 +91,7 @@ router.get("/home", async (req, res) => {
         res.render("resorts/index", { resorts, cardWeather });
       } else {
         //render if user has absolutely no data
-        res.render("resorts/index");
+        res.render("resorts/index0");
       }
     } else {
       res.redirect("http://localhost:3000/users/login");
