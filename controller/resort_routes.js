@@ -11,7 +11,7 @@ router.delete("/home", async (req, res) => {
   await Resort.deleteOne({
     $and: [{ owner: req.session.userId }, { resortId: destroy }],
   });
-  res.redirect("http://localhost:3000/resorts/home");
+  res.redirect("/resorts/home");
 });
 
 //GET - INDEX
@@ -100,7 +100,7 @@ router.get("/home", async (req, res) => {
         res.render("resorts/index0");
       }
     } else {
-      res.redirect("http://localhost:3000/users/login");
+      res.redirect("/users/login");
     }
   } catch {
     console.log("no");
@@ -130,7 +130,7 @@ router.put("/update", async (req, res) => {
     },
     { $set: { isHomeResort: true } }
   );
-  res.redirect("http://localhost:3000/resorts/home");
+  res.redirect("/resorts/home");
 });
 
 /////////////////////
@@ -180,7 +180,7 @@ router.post("/new", async (req, res) => {
   homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
   res.render("resorts/view", { resorts, homeWeather });
 }
-catch{res.redirect('http://localhost:3000/resorts/new')}
+catch{res.redirect('/resorts/new')}
   
 });
 
@@ -203,9 +203,6 @@ router.get("/show/:resortId", async (req, res) => {
   }
 });
 
-// seed route --> has been moved to models/seed.js
-// insert many items into our database with just going to this route
-// localhost:3000/fruits/seed
 router.get('/seed', (req, res) => {
 //     // starting data
 const startStates = [

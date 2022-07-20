@@ -19,7 +19,7 @@ router.delete("/delete/:regionName", async (req, res) => {
   await Region.deleteOne({
     $and: [{ owner: req.session.userId }, { regionName: destroy }],
   });
-  res.redirect("http://localhost:3000/resorts/home");
+  res.redirect("/resorts/home");
 });
 
 router.post("/", async (req, res) => {
