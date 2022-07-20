@@ -24,22 +24,20 @@ router.get("/home", async (req, res) => {
       let home = await Resort.find({
         $and: [{ owner: req.session.userId }, { isHomeResort: true }],
       });
-      if (home.length > 0
-        ) {
-        
+      if (home.length > 0) {
         let userRegions = await Region.find({ owner: req.session.userId });
         let homeState = await State.find({ code: home[0].state });
-        
+
         //Thank you Andrew for this part. Was originally looping through database, now just put states into an array
         //and looped through it. this is to get state name to make items from snocountry api compatible with openweather api
-          let testStates = await State.find({})
-          let cardState = resorts.map((i) => {
-            for (let j = 0; j < testStates.length; j++){
-              if (i.state === testStates[j].code){
-                return testStates[j]
-              }
+        let testStates = await State.find({});
+        let cardState = resorts.map((i) => {
+          for (let j = 0; j < testStates.length; j++) {
+            if (i.state === testStates[j].code) {
+              return testStates[j];
             }
-          })
+          }
+        });
 
         let homeWeather = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
@@ -65,18 +63,17 @@ router.get("/home", async (req, res) => {
           homeWeather,
           cardWeather,
         });
-      } else if (
-        resorts.length > 0) {
-          console.log(resorts)
-          let testStates = await State.find({})
-          let cardState = resorts.map((i) => {
-            for (let j = 0; j < testStates.length; j++){
-              if (i.state === testStates[j].code){
-                return testStates[j]
-              }
+      } else if (resorts.length > 0) {
+        console.log(resorts);
+        let testStates = await State.find({});
+        let cardState = resorts.map((i) => {
+          for (let j = 0; j < testStates.length; j++) {
+            if (i.state === testStates[j].code) {
+              return testStates[j];
             }
-          })
-        console.log(cardState)
+          }
+        });
+        console.log(cardState);
         let cardWeather = await Promise.all(
           cardState.map(async (i) => {
             try {
@@ -88,14 +85,13 @@ router.get("/home", async (req, res) => {
               console.log("ruh roh");
             }
           })
-          
         );
-        console.log(cardWeather)
+        console.log(cardWeather);
         //render if user has resorts but no home resort
-        res.render('resorts/index', {resorts, cardWeather})
+        res.render("resorts/index", { resorts, cardWeather });
       } else {
         //render if user has absolutely no data
-        res.render('resorts/index')
+        res.render("resorts/index");
       }
     } else {
       res.redirect("http://localhost:3000/users/login");
