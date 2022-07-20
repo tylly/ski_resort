@@ -44,6 +44,7 @@ db.on("open", () => {
     { name: "New Jersey", code: "NJ"},
     { name: "New Mexico", code: "NM"},
     { name: "New York", code: "NY"},
+    { name: "New Zealand", code: "NZ"},
     { name: "North Carolina", code: "NC"},
     { name: "North Dakota", code: "ND"},
     { name: "Ohio", code: "OH"},
