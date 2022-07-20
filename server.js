@@ -22,7 +22,7 @@ app.use(
 	})
 )
 app.get('/', (req, res) => {
-    res.redirect('/resorts/home')
+    res.redirect('/users/signup')
 })
 
 
