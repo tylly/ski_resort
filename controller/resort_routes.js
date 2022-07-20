@@ -36,26 +36,20 @@ router.get("/home", async (req, res) => {
       if (home.length > 0
         ) {
         
-
-        console.log(home.length)
-        
         let userRegions = await Region.find({ owner: req.session.userId });
         let homeState = await State.find({ code: home[0].state });
         
-        //thank you fei
-        //linking state codes to their names so they place nice with openweather
-        //i need to fix this and not query the database every time. i need to get all docs with a find and then filter.
-        //USE FILTER METHOD
-        let cardState = await Promise.all(
-          resorts.map(async (i) => {
-            try {
-              let cardName = await State.find({ code: i.state });
-              return cardName[0];
-            } catch {
-              console.log("ruh roh");
+        //Thank you Andrew for this part. Was originally looping through database, now just put states into an array
+        //and looped through it. this is to get state name to make items from snocountry api compatible with openweather api
+          let testStates = await State.find({})
+          let cardState = resorts.map((i) => {
+            for (let j = 0; j < testStates.length; j++){
+              if (i.state === testStates[j].code){
+                return testStates[j]
+              }
             }
           })
-        );
+
         let homeWeather = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
         );
