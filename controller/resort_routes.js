@@ -39,6 +39,9 @@ router.get("/home", async (req, res) => {
           }
         });
 
+        let homeStats = await axios.get(`http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=${home[0].resortId}`)
+        let homeData = homeStats.data.items[0]
+        console.log(homeData)
         let homeWeather = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
         );
@@ -67,6 +70,7 @@ router.get("/home", async (req, res) => {
           userRegions,
           homeWeather,
           cardWeather,
+          homeData
         });
       } else if (resorts.length > 0) {
         //if a user has resorts but no designated home resort
