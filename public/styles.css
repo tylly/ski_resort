@@ -190,8 +190,12 @@ legend {
 }
 
 .pHead {
-
   font-size: 20px;
+  margin: 20px;
+}
+
+.pHead2 {
+  text-decoration: underline;
 }
 
 p {
@@ -352,7 +356,9 @@ fieldset {
 
 #viewImg {
   margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 4px;
+  height: 60px;
 }
 
 .gotNone {

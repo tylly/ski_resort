@@ -12,33 +12,50 @@
   <p>___________</p>
   <div class="stats">
     <div id="openTrails">
-      <p class="pHead">Runs Open</p>
+      <p class="pHead2">Runs Open</p>
       <p>
-        {{ resorts.openDownHillTrails }}/{{ resorts.maxOpenDownHillTrails }}
+        {{ homeData.openDownHillTrails }}/{{ homeData.maxOpenDownHillTrails }}
       </p>
     </div>
-    <div id="snowCon">
-      <p class="pHead">Snow Condition</p>
-      <p>{{ resorts.primarySurfaceCondition }}</p>
+    <div id="id">
+      <p class="pHead2">Skiable Acres</p>
+      <p>{{ homeData.maxOpenDownHillAcres }}</p>
     </div>
     <div id="openLifts">
-      <p class="pHead">Lifts Open</p>
-      <p>{{ resorts.openDownHillLifts }}/{{ resorts.maxOpenDownHillLifts }}</p>
+      <p class="pHead2">Lifts Open</p>
+      <p>{{ homeData.openDownHillLifts }}/{{ homeData.maxOpenDownHillLifts }}</p>
     </div>
   </div>
+  <p>___________</p>
   <div class="stats">
     <div id="base">
-      <p class="pHead">Base Min/Base Max</p>
-      <p>{{ resorts.avgBaseDepthMin }}"/{{ resorts.avgBaseDepthMax }}"</p>
+      <p class="pHead2">Base Min/Base Max</p>
+      <p>{{ homeData.avgBaseDepthMin }}"/{{ homeData.avgBaseDepthMax }}"</p>
     </div>
-    <div id="id">
-      <p class="pHead">Skiable Acres</p>
-      <p>{{ resorts.maxOpenDownHillAcres }}</p>
+    <div id="snowCon">
+      <p class="pHead2">Snow Condition</p>
+      <p>{{ homeData.primarySurfaceCondition }}</p>
     </div>
     <div id="parks">
-      <p class="pHead">Terrain Parks Open</p>
-      <p>{{ resorts.terrainParkOpen }}</p>
+      <p class="pHead2">Terrain Parks Open</p>
+      <p>{{ homeData.terrainParkOpen }}</p>
     </div>
+  </div>
+  <p>___________</p>
+  <div class="stats">
+    <div id="base">
+      <p class="pHead2">Fresh Snow</p>
+      <p>{{ homeData.newSnowMax }}"</p>
+    </div>
+    <div id="parks">
+      <p class="pHead2">Hours</p>
+      <p>M-F: {{ homeData.weekDay }} SAT-SUN: {{ homeData.weekendHours }}</p>
+    </div>
+    <div id="id">
+      <p class="pHead2">Night Riding</p>
+      <p>{{ homeData.nightSkiing }}"</p>
+    </div>
+
   </div>
 </div>
 

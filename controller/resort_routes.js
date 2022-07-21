@@ -199,7 +199,7 @@ router.get("/new", (req, res) => {
   res.render("resorts/new");
 });
 
-//SHOW for new resort user serached for
+//SHOW for new resort user searched for
 router.post("/new", async (req, res) => {
   try {
     resp = await axios.get(
@@ -225,12 +225,17 @@ router.get("/show/:resortId", async (req, res) => {
     });
     let resorts = resortsArr[0];
     console.log(resorts);
+    let homeStats = await axios.get(
+      `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&ids=${resorts.resortId}`
+    );
+    let homeData = homeStats.data.items[0];
+    console.log(homeData)
     let homeState = await State.find({ code: resorts.state });
     let homeWeather = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
     );
     homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
-    res.render("resorts/show", { resorts, homeWeather });
+    res.render("resorts/show", { resorts, homeWeather, homeData });
   } catch {
     console.log("ruh roh");
   }
