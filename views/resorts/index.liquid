@@ -42,6 +42,27 @@
       <p>{{ homeData.terrainParkOpen }}</p>
     </div>
   </div>
+  <div id="homeDelete">
+  <form action="/resorts/home/?_method=DELETE" method="POST">
+    <div id="resortSearch" style="display: none">
+      <input
+        type="text"
+        name="resortId"
+        value="{{ home[0].resortId }}"
+        class="form-control"
+      />
+    </div>
+    <div class="userEnterHome">
+      <input
+        class="homeButImg"
+        type="image"
+        src="/assets/cancel-close-delete-exit-remove-stop-x-icon-326993.png"
+        value="Add to My Resorts"
+        id="logInBut"
+      />
+    </div>
+  </form>
+</div>
 </div>
 <div id="bottomCards">
   <div class="homeCards">

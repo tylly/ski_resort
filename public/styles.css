@@ -362,3 +362,9 @@ fieldset {
 .gotNone:hover {
   color: rgb(106, 119, 138);
 }
+
+#homeDelete {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+}

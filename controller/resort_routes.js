@@ -96,9 +96,14 @@ router.get("/home", async (req, res) => {
             }
           })
         );
+        let userRegions = await Region.find({ owner: req.session.userId });
+        //round temps to whole number
+        cardWeather.forEach((i) => {
+          i.main.temp = Math.round(i.main.temp);
+        });
         console.log(cardWeather);
         //render if user has resorts but no home resort
-        res.render("resorts/index1", { resorts, cardWeather });
+        res.render("resorts/index1", { resorts, cardWeather, userRegions });
       } else {
         //render if user has absolutely no data
         res.render("resorts/index0");
@@ -188,7 +193,7 @@ catch{res.redirect('/resorts/new')}
   
 });
 
-//My resort SHOW
+//SHOW for resorts followed
 router.get("/show/:resortId", async (req, res) => {
   try {
     let resortsArr = await Resort.find({
@@ -207,8 +212,9 @@ router.get("/show/:resortId", async (req, res) => {
   }
 });
 
+
+//Seed route for states/countries
 router.get('/seed', (req, res) => {
-//     // starting data
 const startStates = [
   { name: "Alabama", code: "AL"},
   { name: "Alaska", code: "AK"},
