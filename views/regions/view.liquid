@@ -26,12 +26,17 @@
 
 <div id="bottomCards">
   <div class="homeCards">
-    <img src='http://snocountry.com/ski_area_logos/{{regions[0].id}}logo.jpg' class="regionImg">
-<p>___________</p> 
-<h6>{{regions[0].maxOpenDownHillAcres}}</h6>
-<h6>Skiable Acres</h6>
-<form id="logInForm" action="/resorts" method="POST">
-    <div id="resortSearch" style="display:none">
+    <img
+      src="http://snocountry.com/ski_area_logos/{{ regions[0].id }}logo.jpg"
+      class="regionImg"
+    />
+    <p>___________</p>
+    <h6>{{ regions[0].maxOpenDownHillAcres }}</h6>
+    <h6>Skiable Acres</h6>
+    <p class="weather">{{ cardWeather[0].main.temp }} °F</p>
+    <p class="weather">{{ cardWeather[0].weather[0].description }}</p>
+    <form id="logInForm" action="/resorts" method="POST">
+      <div id="resortSearch" style="display: none">
         <input
           type="text"
           name="resortId"
@@ -39,24 +44,29 @@
           class="form-control"
         />
       </div>
-    <div class="userEnterr">
-      <input
-        type="submit"
-        value="Add to My Resorts"
-        class="btn btn-success"
-        id="logInButReg"
-      />
-    </div>
-  </form>
-</div>
-  
+      <div class="userEnterr">
+        <input
+          type="submit"
+          value="Add to My Resorts"
+          class="btn btn-success"
+          id="logInButReg"
+        />
+      </div>
+    </form>
+  </div>
+
   <div class="homeCards">
-    <img src='http://snocountry.com/ski_area_logos/{{regions[1].id}}logo.jpg' class="regionImg">
-    <p>___________</p>  
-    <h6>{{regions[1].maxOpenDownHillAcres}}</h6>
-<h6>Skiable Acres</h6>
-<form id="logInForm" action="/resorts" method="POST">
-    <div id="resortSearch" style="display:none">
+    <img
+      src="http://snocountry.com/ski_area_logos/{{ regions[1].id }}logo.jpg"
+      class="regionImg"
+    />
+    <p>___________</p>
+    <h6>{{ regions[1].maxOpenDownHillAcres }}</h6>
+    <h6>Skiable Acres</h6>
+    <p class="weather">{{ cardWeather[1].main.temp }} °F</p>
+    <p class="weather">{{ cardWeather[1].weather[0].description }}</p>
+    <form id="logInForm" action="/resorts" method="POST">
+      <div id="resortSearch" style="display: none">
         <input
           type="text"
           name="resortId"
@@ -64,24 +74,29 @@
           class="form-control"
         />
       </div>
-    <div class="userEnterr">
-      <input
-        type="submit"
-        value="Add to My Resorts"
-        class="btn btn-success"
-        id="logInButReg"
-      />
-    </div>
-  </form>
+      <div class="userEnterr">
+        <input
+          type="submit"
+          value="Add to My Resorts"
+          class="btn btn-success"
+          id="logInButReg"
+        />
+      </div>
+    </form>
   </div>
- 
+
   <div class="homeCards">
-    <img src='http://snocountry.com/ski_area_logos/{{regions[2].id}}logo.jpg' class="regionImg">
-    <p>___________</p>  
-    <h6>{{regions[2].maxOpenDownHillAcres}}</h6>
-<h6>Skiable Acres</h6>
-<form id="logInForm" action="/resorts" method="POST">
-    <div id="resortSearch" style="display:none">
+    <img
+      src="http://snocountry.com/ski_area_logos/{{ regions[2].id }}logo.jpg"
+      class="regionImg"
+    />
+    <p>___________</p>
+    <h6>{{ regions[2].maxOpenDownHillAcres }}</h6>
+    <h6>Skiable Acres</h6>
+    <p class="weather">{{ cardWeather[2].main.temp }} °F</p>
+    <p class="weather">{{ cardWeather[2].weather[0].description }}</p>
+    <form id="logInForm" action="/resorts" method="POST">
+      <div id="resortSearch" style="display: none">
         <input
           type="text"
           name="resortId"
@@ -89,15 +104,15 @@
           class="form-control"
         />
       </div>
-    <div class="userEnterr">
-      <input
-        type="submit"
-        value="Add to My Resorts"
-        class="btn btn-success"
-        id="logInButReg"
-      />
-    </div>
-  </form>
+      <div class="userEnterr">
+        <input
+          type="submit"
+          value="Add to My Resorts"
+          class="btn btn-success"
+          id="logInButReg"
+        />
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}

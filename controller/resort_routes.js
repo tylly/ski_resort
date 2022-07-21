@@ -51,6 +51,7 @@ router.get("/home", async (req, res) => {
         let homeWeather = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${homeState[0].name}&appid=8fb137f32bd26f624e9cd15073b51fec&units=imperial`
         );
+        //round temp
         homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
 
         //getting weather for all other resorts followed. Thank you Fei for the async iterator tip
