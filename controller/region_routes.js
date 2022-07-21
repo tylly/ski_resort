@@ -28,8 +28,9 @@ router.delete("/delete/:regionName", async (req, res) => {
 //ADD new region
 router.post("/", async (req, res) => {
   console.log(req.body);
+  let resortId  = req.body.resortId
   const newRegion = {
-    regionName: regionId,
+    regionName: resortId,
     owner: req.session.userId,
   };
   console.log(newRegion)

@@ -16,6 +16,7 @@ router.delete("/home", async (req, res) => {
 });
 
 //GET - INDEX
+//This is essentially the homepage
 router.get("/home", async (req, res) => {
   try {
     if (req.session.userId) {
@@ -54,7 +55,7 @@ router.get("/home", async (req, res) => {
         //round temp
         homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
 
-        //getting weather for all other resorts followed. Thank you Fei for the async iterator tip
+        //getting weather for all other resorts followed. 
         let cardWeather = await Promise.all(
           cardState.map(async (i) => {
             try {
@@ -87,6 +88,7 @@ router.get("/home", async (req, res) => {
 
         //getting state names to be able to use openweather api
         //there is probably a more elegeant way to do this
+        //shout out Andrew again
         let testStates = await State.find({});
         //see which states/countries match the codes in resorts
         let cardState = resorts.map((i) => {
