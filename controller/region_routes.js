@@ -15,23 +15,29 @@ router.get("/", async (req, res) => {
 
 //DELETE region
 router.delete("/delete/:regionName", async (req, res) => {
+  //getting the id of the region to delete
   destroy = req.body.regionId;
+  //deleting
   await Region.deleteOne({
     $and: [{ owner: req.session.userId }, { regionName: destroy }],
   });
+  //back to user home
   res.redirect("/resorts/home");
 });
 
+//ADD new region
 router.post("/", async (req, res) => {
   console.log(req.body);
   const newRegion = {
     regionName: regionId,
     owner: req.session.userId,
   };
+  console.log(newRegion)
   Region.create(newRegion);
   res.redirect("resorts/home");
 });
 
+//search page for new region
 router.get("/new", async (req, res) => {
   try {
     res.render("regions/new");
@@ -40,16 +46,21 @@ router.get("/new", async (req, res) => {
   }
 });
 
+//search submission with api call
 router.post("/new", async (req, res) => {
   try {
     let resp = await axios.get(
+      //get region data
       `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&regions=${req.body.regionId}`
     );
     let regions = resp.data.items;
     if (regions) {
-      regionId = req.body.regionId;
+      let regionId = req.body.regionId;
       regionId = regionId.toUpperCase();
+      //get resorts in region. i should not have called this regions, because 
+      //its three resorts
       let regions = resp.data.items;
+      //find states corresponding to each resort
       let testStates = await State.find({});
       let cardState = regions.map((i) => {
         for (let j = 0; j < testStates.length; j++) {
