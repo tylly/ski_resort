@@ -190,7 +190,8 @@ legend {
 }
 
 .pHead {
-  text-decoration: underline;
+
+  font-size: 20px;
 }
 
 p {
