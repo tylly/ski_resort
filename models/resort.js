@@ -14,6 +14,8 @@ const resortSchema = new Schema({
     },
     state: String,
     logo: String,
+    //everything here down to maxOpenDownHillAcres can be deleted because
+    //this is all provided on the spot with api calls
     avgBaseDepthMin: String,
     avgBaseDepthMax: String,
     primarySurfaceCondition: String,
