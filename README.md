@@ -11,9 +11,9 @@ The home page will be a sign in/create account page. On the sign in page, the us
 
 There will be extra emphasis on the user's chosen home resort, as well as the users chosen home region/state. There will also be a nav bar that will house New Resort, New Region, My Resorts(s) and login/logout tabs.
 
-On the new resort window page, the user can search any ski resport by name. They can then view this resorts stats, and choose to add it to their list of resorts. The same applies to region.
+On the new resort window page, the user can search any ski resport by name. They can then view this resorts stats and weather, and choose to add it to their list of resorts. The same applies to region.
 
-On the My Resorts page, the user can rate and comment on their resorts. They can also select/change which resort is their home resort, which can also be done on the profile settings page. This applies to regions as well. A stretch would be to add the ability to upload photos to each resort on a users profile.
+They can also select/change which resort is their home resort, which can also be done on the profile settings page. This applies to regions as well. A stretch would be to add the ability to upload photos to each resort on a users profile.
 
 ###
 
@@ -31,7 +31,7 @@ Resorts: This model will hold the resorts saved by users to their accounts so th
 
 Technologies
 
-Vanilla javascript, express, MongoDB, Mongoose, liquid express views for templating
+Vanilla javascript, express, MongoDB, Mongoose, liquid express views for templating, snocountry api, openweather api
 
 ###
 
