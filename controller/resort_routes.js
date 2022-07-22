@@ -55,7 +55,7 @@ router.get("/home", async (req, res) => {
         //round temp
         homeWeather.data.main.temp = Math.round(homeWeather.data.main.temp);
 
-        //getting weather for all other resorts followed. 
+        //getting weather for all other resorts followed. thank you Fei
         let cardWeather = await Promise.all(
           cardState.map(async (i) => {
             try {
