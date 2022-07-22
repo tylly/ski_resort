@@ -60,22 +60,6 @@ type: String,
 required: true
 }
 
-regions database
-
-name: {
-type: String,
-required: true
-} state/country: {
-type: String,
-required: true
-} top10: [{
-name: {
-type: String,
-required: true
-} icon: String,
-}]
-
-
 
 Resorts collection
 
