@@ -100,6 +100,7 @@ router.post("/new", async (req, res) => {
 
 router.get("/show/:regionId", async (req, res) => {
   let regionId = req.params.regionId;
+  console.log('route hit')
   resp = await axios.get(
     `http://feeds.snocountry.net/getSnowReport.php?apiKey=SnoCountry.example&regions=${regionId}`
   );
